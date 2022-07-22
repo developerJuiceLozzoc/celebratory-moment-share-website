@@ -1,0 +1,92 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <header>Marriot Bonvoy Celebratory Moment</header>
+        <div class="container">
+            <div class="bottom-left">Bottom Left</div>
+            <div class="top-left">Top Left</div>
+            <div class="top-right">Top Right</div>
+            <div class="bottom-right">Bottom Right</div>
+            <div class="centered">Centered</div>
+          </div>
+          <style>
+              /* Container holding the image and the text */
+                .container {
+                position: relative;
+                text-align: center;
+                color: white;
+                }
+
+                /* Bottom left text */
+                .bottom-left {
+                position: absolute;
+                bottom: 8px;
+                left: 16px;
+                }
+
+                /* Top left text */
+                .top-left {
+                position: absolute;
+                top: 8px;
+                left: 16px;
+                }
+
+                /* Top right text */
+                .top-right {
+                position: absolute;
+                top: 8px;
+                right: 16px;
+                }
+
+                /* Bottom right text */
+                .bottom-right {
+                position: absolute;
+                bottom: 8px;
+                right: 16px;
+                }
+
+                /* Centered text */
+                .centered {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                }
+          </style>
+    </body>
+    
+    <script>
+        function getQueryParams() {
+            const url = window.location.href;
+            let urlparts = url.split("?")
+            let queryParams = new Map()
+            if (urlparts.length > 1) {
+                urlparts[1].split("&").forEach(function(param){
+                    let pieces = param.split("=")
+                    if (pieces.length != 2) {
+                        return
+                    }
+                    queryParams[pieces[0]] = pieces[1];
+                })
+            }
+            return queryParams;
+        }
+        function configureImageViewForEliteStatus(statusLevel) {
+            var img = document.createElement("img");
+            let el = document.querySelector(".container")
+            switch(statusLevel) {
+                case "gold":
+                    img.src = "https://placekitten.com/408/287";
+                default: 
+                    img.src = "https://placekitten.com/408/287";
+            }
+            el.appendChild(img)
+
+        }
+        const queryParams = getQueryParams()
+        configureImageViewForEliteStatus(queryParams["eliteLevel"])
+
+        
+    </script>
+</html>
