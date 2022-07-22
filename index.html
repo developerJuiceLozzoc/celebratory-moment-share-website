@@ -2,13 +2,12 @@
     <head>
     </head>
     <body>
-        <header>Marriot Bonvoy Celebratory Moment</header>
         <div class="container">
             <div class="bottom-left">Bottom Left</div>
             <div class="top-left">Top Left</div>
             <div class="top-right">Top Right</div>
             <div class="bottom-right">Bottom Right</div>
-            <div class="centered">Centered</div>
+            <div class="centered"></div>
           </div>
           <style>
               /* Container holding the image and the text */
@@ -84,9 +83,14 @@
             el.appendChild(img)
 
         }
+        function configureTextForQueryParameters(queryParams){
+            const el = document.querySelector(".centered")
+            el.textContent = queryParams["textContent"]
+
+        }
         const queryParams = getQueryParams()
         configureImageViewForEliteStatus(queryParams["eliteLevel"])
-
+        configureTextForQueryParameters(queryParams)
         
     </script>
 </html>
